@@ -51,6 +51,37 @@ nav a:hover{
 color:#ff4fa3;
 }
 
+.search-container {
+display: flex;
+align-items: center;
+background: #f9f9f9;
+border: 1px solid #eee;
+border-radius: 25px;
+padding: 5px 15px;
+}
+
+.search-container input {
+border: none;
+outline: none;
+background: transparent;
+padding: 5px;
+font-size: 14px;
+color: #333;
+width: 150px;
+}
+
+.search-container button {
+background: none;
+border: none;
+cursor: pointer;
+font-size: 16px;
+color: #666;
+}
+
+.search-container button:hover {
+color: #ff4fa3;
+}
+
 .hero{
 display:flex;
 justify-content:space-between;
@@ -213,7 +244,7 @@ width:280px;
 margin-top:30px;
 }
 
-nav{
+nav, .search-container {
 display:none;
 }
 
@@ -234,6 +265,11 @@ display:none;
 <a href="#products">Products</a>
 <a href="#about">About</a>
 </nav>
+
+<div class="search-container">
+<input type="text" id="searchInput" placeholder="Search..." onkeyup="searchProducts()">
+<button type="button" onclick="searchProducts()">🔍</button>
+</div>
 
 </header>
 
@@ -624,6 +660,29 @@ Buy Now
     </p>
 
 </footer>
+
+<script>
+function searchProducts() {
+    let inputElement = document.getElementById('searchInput');
+    if (!inputElement) return;
+    
+    let input = inputElement.value.trim().toLowerCase();
+    let cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        let titleElement = card.querySelector('h3');
+        let descElement = card.querySelector('p');
+        let title = titleElement ? titleElement.textContent.toLowerCase() : '';
+        let desc = descElement ? descElement.textContent.toLowerCase() : '';
+
+        if (title.includes(input) || desc.includes(input)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+</script>
 
 </body>
 </html>
