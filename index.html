@@ -1,688 +1,849 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pin Your Style</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Your Style</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-<style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+        body {
+            background: #fff7fb;
+            color: #333;
+        }
 
-body{
-background:#fff7fb;
-color:#333;
-}
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+            z-index: 100;
+        }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-background:#fff;
-position:sticky;
-top:0;
-box-shadow:0 2px 15px rgba(0,0,0,.08);
-z-index:100;
-}
+        .logo {
+            font-size: 30px;
+            font-weight: 700;
+            color: #ff4fa3;
+        }
 
-.logo{
-font-size:30px;
-font-weight:700;
-color:#ff4fa3;
-}
+        nav a {
+            text-decoration: none;
+            margin-left: 25px;
+            color: #555;
+            font-weight: 500;
+            transition: .3s;
+        }
 
-nav a{
-text-decoration:none;
-margin-left:25px;
-color:#555;
-font-weight:500;
-transition:.3s;
-}
+        nav a:hover {
+            color: #ff4fa3;
+        }
 
-nav a:hover{
-color:#ff4fa3;
-}
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 25px;
+            padding: 5px 15px;
+        }
 
-.search-container {
-display: flex;
-align-items: center;
-background: #f9f9f9;
-border: 1px solid #eee;
-border-radius: 25px;
-padding: 5px 15px;
-}
+        .search-container input {
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 5px;
+            font-size: 14px;
+            color: #333;
+            width: 150px;
+        }
 
-.search-container input {
-border: none;
-outline: none;
-background: transparent;
-padding: 5px;
-font-size: 14px;
-color: #333;
-width: 150px;
-}
+        .search-container button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #666;
+        }
 
-.search-container button {
-background: none;
-border: none;
-cursor: pointer;
-font-size: 16px;
-color: #666;
-}
+        .search-container button:hover {
+            color: #ff4fa3;
+        }
 
-.search-container button:hover {
-color: #ff4fa3;
-}
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px 8%;
+            flex-wrap: wrap;
+        }
 
-.hero{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:80px 8%;
-flex-wrap:wrap;
-}
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
 
-.hero-text{
-flex:1;
-min-width:300px;
-}
+        .hero-text h1 {
+            font-size: 55px;
+            color: #ff4fa3;
+            margin-bottom: 20px;
+        }
 
-.hero-text h1{
-font-size:55px;
-color:#ff4fa3;
-margin-bottom:20px;
-}
+        .hero-text p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
 
-.hero-text p{
-font-size:18px;
-color:#666;
-line-height:1.7;
-margin-bottom:25px;
-}
+        .shop-btn {
+            display: inline-block;
+            background: #ff4fa3;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+        }
 
-.shop-btn{
-display:inline-block;
-background:#ff4fa3;
-color:white;
-padding:15px 35px;
-border-radius:40px;
-text-decoration:none;
-font-weight:600;
-transition:.3s;
-}
+        .shop-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(255, 79, 163, .3);
+        }
 
-.shop-btn:hover{
-transform:translateY(-4px);
-box-shadow:0 10px 20px rgba(255,79,163,.3);
-}
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            min-width: 300px;
+        }
 
-.hero-image{
-flex:1;
-display:flex;
-justify-content:center;
-min-width:300px;
-}
+        .hero-image img {
+            width: 350px;
+            border-radius: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, .15);
+        }
 
-.hero-image img{
-width:350px;
-border-radius:25px;
-box-shadow:0 15px 30px rgba(0,0,0,.15);
-}
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            color: #ff4fa3;
+            margin-top: 70px;
+            margin-bottom: 10px;
+        }
 
-.section-title{
-text-align:center;
-font-size:40px;
-color:#ff4fa3;
-margin-top:70px;
-margin-bottom:10px;
-}
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
 
-.subtitle{
-text-align:center;
-color:#666;
-margin-bottom:40px;
-}
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 8% 70px;
+        }
 
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-padding:0 8% 70px;
-}
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+            transition: .3s;
+        }
 
-.card{
-background:white;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
-transition:.3s;
-}
+        .card:hover {
+            transform: translateY(-8px);
+        }
 
-.card:hover{
-transform:translateY(-8px);
-}
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
 
-.card img{
-width:100%;
-height:300px;
-object-fit:cover;
-}
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
 
-.card-content{
-padding:20px;
-text-align:center;
-}
+        .card h3 {
+            margin-bottom: 10px;
+            color: #ff4fa3;
+        }
 
-.card h3{
-margin-bottom:10px;
-color:#ff4fa3;
-}
+        .buy-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background: #ff4fa3;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
-.buy-btn{
-display:inline-block;
-margin-top:15px;
-background:#ff4fa3;
-color:white;
-padding:12px 25px;
-border-radius:30px;
-text-decoration:none;
-font-weight:600;
-}
+        .buy-btn:hover {
+            background: #ff2b8a;
+        }
 
-.buy-btn:hover{
-background:#ff2b8a;
-}
+        .about {
+            padding: 70px 10%;
+            text-align: center;
+            background: #fff;
+        }
 
-.about{
-padding:70px 10%;
-text-align:center;
-background:#fff;
-}
+        .about h2 {
+            color: #ff4fa3;
+            margin-bottom: 20px;
+            font-size: 38px;
+        }
 
-.about h2{
-color:#ff4fa3;
-margin-bottom:20px;
-font-size:38px;
-}
+        .about p {
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.8;
+            color: #666;
+            font-size: 17px;
+        }
 
-.about p{
-max-width:800px;
-margin:auto;
-line-height:1.8;
-color:#666;
-font-size:17px;
-}
+        footer {
+            background: #ff4fa3;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
 
-footer{
-background:#ff4fa3;
-color:white;
-text-align:center;
-padding:25px;
-}
+        @media(max-width:900px) {
 
-@media(max-width:900px){
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
 
-.hero{
-flex-direction:column;
-text-align:center;
-}
+            .hero-text h1 {
+                font-size: 40px;
+            }
 
-.hero-text h1{
-font-size:40px;
-}
+            .hero-image img {
+                width: 280px;
+                margin-top: 30px;
+            }
 
-.hero-image img{
-width:280px;
-margin-top:30px;
-}
+            nav,
+            .search-container {
+                display: none;
+            }
 
-nav, .search-container {
-display:none;
-}
-
-}
-
-</style>
+        }
+    </style>
 
 </head>
 
 <body>
 
-<header>
-
-<div class="logo">🌸 Pin Your Style</div>
-
-<nav>
-<a href="#">Home</a>
-<a href="#products">Products</a>
-<a href="#about">About</a>
-</nav>
-
-<div class="search-container">
-<input type="text" id="searchInput" placeholder="Search..." onkeyup="searchProducts()">
-<button type="button" onclick="searchProducts()">🔍</button>
-</div>
-
-</header>
-
-<section class="hero">
-
-<div class="hero-text">
-
-<h1>Shop the Look ✨</h1>
-
-<p>
-Order now and elevate your style with our trending fashion collection.
-Discover premium outfits inspired by today's hottest Pinterest looks.
-</p>
-
-<a href="#products" class="shop-btn">
-Explore Collection
-</a>
-
-</div>
-
-<div class="hero-image">
-<img src="WhatsApp Image 2026-07-08 at 23.24.02.jpeg" alt="Shop Look">
-</div>
-
-</section>
-
-<h2 class="section-title" id="products">
-🛍 Shop the Look
-</h2>
-
-<p class="subtitle">
-Order Now & Elevate Your Style
-</p>
-
-<section class="products">
-<div class="card">
-<img src="1000050962.jpg">
-
-<div class="card-content">
-<h3>Oversized Printed T-Shirt</h3>
-
-<p>Comfortable premium cotton oversized fit.</p>
-
-<a href="https://amzn.in/d/0f8EbreC" target="_blank" class="buy-btn">
-Buy Now
-</a>
-
-</div>
-</div>
-
-<div class="card">
-
-<img src="1000050963.jpg ">
-
-<div class="card-content">
-
-<h3>Wide Leg Jeans</h3>
-
-<p>Stylish relaxed fit denim for everyday wear.</p>
-
-<a href="https://amzn.in/d/0g5uxNbf" target="_blank" class="buy-btn">
-Buy Now
-</a>
-
-</div>
-
-</div><!-- Sneakers Card -->
-<div class="card">
-
-    <img src="1000050964.jpg">
-
-    <div class="card-content">
-
-        <h3>White Sneakers</h3>
-
-        <p>Perfect sneakers for a trendy everyday look.</p>
-
-        <a href="https://amzn.in/d/0aF2fY60" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-
-</div>
-</div><!-- Hand Bag -->
-<div class="card">
-
-    <img src="1000050991.jpg">
-
-    <div class="card-content">
-
-        <h3>Hand Bag</h3>
-
-        <p>Perfect Hand bag for a trendy look.</p>
-
-        <a href="https://amzn.in/d/0bPwWtly" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-
-</div>
-</div><!-- Dress -->
-<div class="card">
-
-    <img src="1000050990.jpg">
-
-    <div class="card-content">
-
-        <h3>Dress</h3>
-
-        <p>Perfect dress for a trendy look for every occasion</p>
-
-        <a href="https://amzn.in/d/0bpvTm8c" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-
-</div>
-</div><!-- Heels -->
-<div class="card">
-
-    <img src="1000050989.jpg">
-
-    <div class="card-content">
-
-        <h3>Heels</h3>
-
-        <p>Perfect heels for a trendy look for every occasion</p>
-
-        <a href="https://amzn.in/d/03N2o9l7" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-
-</div>
-
-</div><!-- sharara -->
-<div class="card">
-
-    <img src="sharara.jpg">
-
-    <div class="card-content">
-
-        <h3>sharara</h3>
-
-        <p>Perfect sharara for a trendy look for best  occasion</p>
-
-        <a href="https://www.amazon.in/dp/B0H663HJMX/ref=cm_sw_r_as_gl_apa_gl_i_YC07TC3RKSWJGYBTW1F0?linkCode=ml1&tag=pinyourstyle2-21&linkId=22f9732933110fed127410c86e37dc1f" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-
-  </div><!-- Heels -->
- <div class="card">
-
-    <img src="1000051152.jpg">
-
-    <div class="card-content">
-
-        <h3>Heels</h3>
-
-        <p>Perfect heels for a  sharar match trendy look for  occasion</p>
-
-        <a href="https://link.amazon/B07tQLTMF" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-
-    </div><!-- Hand Bag -->
-<div class="card">
-
-    <img src="1000051153.jpg">
-
-    <div class="card-content">
-
-        <h3>Hand Bag</h3>
-
-        <p>Perfect Hand bag for combination of sharara and a trendy look.</p>
-
-        <a href="https://www.amazon.in/dp/B0F8RB6DSF/ref=cm_sw_r_as_gl_apa_gl_i_ZM497VJZR1D6ZQ2685WP?linkCode=ml1&tag=pinyourstyle2-21&linkId=4e402dcfb778924dea1e37c53f655457" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
- </div><!-- Maxi Dress -->
- <div class="card">
-
-    <img src="5th drees.jpg">
-
-    <div class="card-content">
-
-        <h3>Maxi Drees</h3>
-
-        <p>Aahwan Solid Square Neck Bodycon Mermaid Hem Sleeveless Maxi Dress for Women's & Girl's</p>
-
-        <a href="-https://link.amazon/B0gjrW8b6" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-</div><!-- Hand bag  -->
-<div class="card">
-
-    <img src="5th bg.jpg">
-
-    <div class="card-content">
-
-        <h3>Hand bag</h3>
-
-        <p>Womens Glossy Shoulder Bag with Chain Strap & Buckle Detail Stylish Patent Leather Handbag, Compact Underarm Purse for Party, Evening & Daily Use</p>
-
-        <a href="-https://link.amazon/B09hR3If7" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-</div><!--Pump Heels -->
- <div class="card">
-
-    <img src="5th hel.jpg">
-
-    <div class="card-content">
-
-        <h3>Pump Heels</h3>
-
-        <p>Shoetopia Women Pump Heels</p>
-
-        <a href="https://link.amazon/B09HpFsdf " target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-</div><!--KOTTY Women's Bootcut Flare Jeans -->
- <div class="card">
-
-    <img src="jen6th.jpg">
-
-    <div class="card-content">
-
-        <h3>KOTTY Women's Bootcut jeans</h3>
-
-        <p>KOTTY Women's Bootcut Flare Jeans with Slim Fit Thigh and Wide Hem Design</p>
-
-        <a href="https://link.amazon/B049lpA73" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div></div><!--Crop Top for Women's & Girls -->
- <div class="card">
-
-    <img src="top6th.jpg">
-
-    <div class="card-content">
-
-        <h3>Crop Top for Women's & Girls </h3>
-
-        <p>Aahwan Solid Basic V Neck Collared Slim Fit Crop Top for Women's & Girls'</p>
-
-        <a href="https://link.amazon/B02jns6lg" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-</div></div><!--Women’s Shoulder & Sling Bag -->
- <div class="card">
-
-    <img src="bag 6th.jpg">
-
-    <div class="card-content">
-
-        <h3>Womens Shoulder & Sling Bag</h3>
-
-        <p>Womens Shoulder & Sling Bag with Zipper Closure, Detachable Long Strap, Spacious Single Compartment Handbag for Daily & Office Use | Trendy Design</p>
-
-        <a href="https://link.amazon/B08ZwGVwb" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-    </div></div><!--Spaghetti Straps Crop Top for Women's & Girl's -->
- <div class="card">
-
-    <img src="top 7th.jpg">
-
-    <div class="card-content">
-
-        <h3>Spaghetti Straps Crop Top for Women's & Girl's</h3>
-
-        <p>Aahwan Red Solid Fitted Square Halter Neckline with Spaghetti Straps Crop Top for Women's & Girl's</p>
-
-        <a href="https://link.amazon/B06k67CDd" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-    </div></div><!--Lymio Skirts for Women -->
- <div class="card">
-
-    <img src="1000051778.jpg">
-
-    <div class="card-content">
-
-        <h3>Lymio Skirts for Women  </h3>
-
-        <p>Lymio Skirts for Women | Denim Mini Skirt | High Waisted Light Blue Jean Skirts for Women | Casual Short Pencil Skirt with Pockets | Slim Fit Stretch Denim Bottoms (LWHP-62-63)</p>
-
-        <a href="https://link.amazon/B093J7hpZ" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-</div></div><!--Shoetopia Women's Suede Ankle Boots with Block Heel -->
- <div class="card">
-
-    <img src="show 7th.jpg">
-
-    <div class="card-content">
-
-        <h3>Shoetopia Women's Suede Ankle Boots with Block Heel</h3>
-
-        <p>Shoetopia Women's Suede Ankle Boots with Block Heel and Rhinestone Knot Detail||Side Zip Fashion Booties for Fall & Winter</p>
-
-        <a href="https://link.amazon/B0b5jfQv3" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-    </div></div><!--LEGAL  BRIBE D Style Handle Sling Bag (Beige) -->
- <div class="card">
-
-    <img src="7th bag.jpg">
-
-    <div class="card-content">
-
-        <h3>LEGAL BRIBE D Style Handle Sling Bag (Beige) </h3>
-
-        <p>LEGAL BRIBE D Style Handle Sling Bag (Beige) </p>
-
-        <a href="https://www.amazon.in/dp/B0F2417FLV/ref=cm_sw_r_as_gl_apa_gl_i_P0V5P3V38VM5MPGZCPBT?linkCode=ml1&tag=pinyourstyle2-21&linkId=e7bd73b42873fe995db4f175e36887c8" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-    </div></div><!--Shining Diva Fashion Latest Stylish Multilayer Gold Plated Bangle Bracelet for Women and Girls (rr14669b) Set of 6 -->
- <div class="card">
-
-    <img src="7th bangal.jpg">
-
-    <div class="card-content">
-
-        <h3>Shining Diva Fashion Latest Stylish Multilayer Gold Plated Bangle Bracelet for Women and Girls (rr14669b) Set of 6</h3>
-
-        <p>Shining Diva Fashion Latest Stylish Multilayer Gold Plated Bangle Bracelet for Women and Girls (rr14669b) Set of 6</p>
-
-        <a href="https://link.amazon/B09mOkMWS" target="_blank" class="buy-btn">
-            Buy Now
-        </a>
-
-    </div>
-    <section></section>
-       
+    <header>
+
+        <div class="logo">🌸 Pin Your Style</div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchProducts()">
+            <button type="button" onclick="searchProducts()">🔍</button>
         </div>
-    </div>
 
-<section class="about" id="about">
+    </header>
 
-    <h2>About Pin Your Style</h2>
+    <section class="hero">
 
-    <p>
-        Pin Your Style helps you discover stylish fashion products for men and women. Explore trendy outfits and shop directly using our trusted product links.
+        <div class="hero-text">
+
+            <h1>Shop the Look ✨</h1>
+
+            <p>
+                Order now and elevate your style with our trending fashion collection.
+                Discover premium outfits inspired by today's hottest Pinterest looks.
+            </p>
+
+            <a href="#products" class="shop-btn">
+                Explore Collection
+            </a>
+
+        </div>
+
+        <div class="hero-image">
+            <img src="WhatsApp Image 2026-07-08 at 23.24.02.jpeg" alt="Shop Look">
+        </div>
+
+    </section>
+
+    <h2 class="section-title" id="products">
+        🛍 Shop the Look
+    </h2>
+
+    <p class="subtitle">
+        Order Now & Elevate Your Style
     </p>
 
-</section>
+    <section class="products">
+        <div class="card">
+            <img src="1000050962.jpg">
 
-<footer>
+            <div class="card-content">
+                <h3>Oversized Printed T-Shirt</h3>
 
-    <h2>🌸 Pin Your Style</h2>
+                <p>Comfortable premium cotton oversized fit.</p>
 
-    <p>Made with ❤️ for fashion lovers.</p>
+                <a href="https://amzn.in/d/0f8EbreC" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
 
-    <p style="margin-top:15px;">
-        © 2026 Pin Your Style. All Rights Reserved. 
-    </p>
+            </div>
+        </div>
 
-</footer>
+        <div class="card">
 
-<script>
-function searchProducts() {
-    let inputElement = document.getElementById('searchInput');
-    if (!inputElement) return;
-    
-    let input = inputElement.value.trim().toLowerCase();
-    let cards = document.querySelectorAll('.card');
+            <img src="1000050963.jpg ">
 
-    cards.forEach(card => {
-        let titleElement = card.querySelector('h3');
-        let descElement = card.querySelector('p');
-        let title = titleElement ? titleElement.textContent.toLowerCase() : '';
-        let desc = descElement ? descElement.textContent.toLowerCase() : '';
+            <div class="card-content">
 
-        if (title.includes(input) || desc.includes(input)) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
-    });
-}
-</script>
+                <h3>Wide Leg Jeans</h3>
+
+                <p>Stylish relaxed fit denim for everyday wear.</p>
+
+                <a href="https://amzn.in/d/0g5uxNbf" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+
+        </div><!-- Sneakers Card -->
+        <div class="card">
+
+            <img src="1000050964.jpg">
+
+            <div class="card-content">
+
+                <h3>White Sneakers</h3>
+
+                <p>Perfect sneakers for a trendy everyday look.</p>
+
+                <a href="https://amzn.in/d/0aF2fY60" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+
+        </div>
+        </div><!-- Hand Bag -->
+        <div class="card">
+
+            <img src="1000050991.jpg">
+
+            <div class="card-content">
+
+                <h3>Hand Bag</h3>
+
+                <p>Perfect Hand bag for a trendy look.</p>
+
+                <a href="https://amzn.in/d/0bPwWtly" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+
+        </div>
+        </div><!-- Dress -->
+        <div class="card">
+
+            <img src="1000050990.jpg">
+
+            <div class="card-content">
+
+                <h3>Dress</h3>
+
+                <p>Perfect dress for a trendy look for every occasion</p>
+
+                <a href="https://amzn.in/d/0bpvTm8c" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+
+        </div>
+        </div><!-- Heels -->
+        <div class="card">
+
+            <img src="1000050989.jpg">
+
+            <div class="card-content">
+
+                <h3>Heels</h3>
+
+                <p>Perfect heels for a trendy look for every occasion</p>
+
+                <a href="https://amzn.in/d/03N2o9l7" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+
+        </div>
+
+        </div><!-- sharara -->
+        <div class="card">
+
+            <img src="sharara.jpg">
+
+            <div class="card-content">
+
+                <h3>sharara</h3>
+
+                <p>Perfect sharara for a trendy look for best occasion</p>
+
+                <a href="https://www.amazon.in/dp/B0H663HJMX/ref=cm_sw_r_as_gl_apa_gl_i_YC07TC3RKSWJGYBTW1F0?linkCode=ml1&tag=pinyourstyle2-21&linkId=22f9732933110fed127410c86e37dc1f"
+                    target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+
+        </div><!-- Heels -->
+        <div class="card">
+
+            <img src="1000051152.jpg">
+
+            <div class="card-content">
+
+                <h3>Heels</h3>
+
+                <p>Perfect heels for a sharar match trendy look for occasion</p>
+
+                <a href="https://link.amazon/B07tQLTMF" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+
+        </div><!-- Hand Bag -->
+        <div class="card">
+
+            <img src="1000051153.jpg">
+
+            <div class="card-content">
+
+                <h3>Hand Bag</h3>
+
+                <p>Perfect Hand bag for combination of sharara and a trendy look.</p>
+
+                <a href="https://www.amazon.in/dp/B0F8RB6DSF/ref=cm_sw_r_as_gl_apa_gl_i_ZM497VJZR1D6ZQ2685WP?linkCode=ml1&tag=pinyourstyle2-21&linkId=4e402dcfb778924dea1e37c53f655457"
+                    target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div><!-- Maxi Dress -->
+        <div class="card">
+
+            <img src="5th drees.jpg">
+
+            <div class="card-content">
+
+                <h3>Maxi Drees</h3>
+
+                <p>Aahwan Solid Square Neck Bodycon Mermaid Hem Sleeveless Maxi Dress for Women's & Girl's</p>
+
+                <a href="-https://link.amazon/B0gjrW8b6" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div><!-- Hand bag  -->
+        <div class="card">
+
+            <img src="5th bg.jpg">
+
+            <div class="card-content">
+
+                <h3>Hand bag</h3>
+
+                <p>Womens Glossy Shoulder Bag with Chain Strap & Buckle Detail Stylish Patent Leather Handbag, Compact
+                    Underarm Purse for Party, Evening & Daily Use</p>
+
+                <a href="-https://link.amazon/B09hR3If7" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div><!--Pump Heels -->
+        <div class="card">
+
+            <img src="5th hel.jpg">
+
+            <div class="card-content">
+
+                <h3>Pump Heels</h3>
+
+                <p>Shoetopia Women Pump Heels</p>
+
+                <a href="https://link.amazon/B09HpFsdf " target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div><!--KOTTY Women's Bootcut Flare Jeans -->
+        <div class="card">
+
+            <img src="jen6th.jpg">
+
+            <div class="card-content">
+
+                <h3>KOTTY Women's Bootcut jeans</h3>
+
+                <p>KOTTY Women's Bootcut Flare Jeans with Slim Fit Thigh and Wide Hem Design</p>
+
+                <a href="https://link.amazon/B049lpA73" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div><!--Crop Top for Women's & Girls -->
+        <div class="card">
+
+            <img src="top6th.jpg">
+
+            <div class="card-content">
+
+                <h3>Crop Top for Women's & Girls </h3>
+
+                <p>Aahwan Solid Basic V Neck Collared Slim Fit Crop Top for Women's & Girls'</p>
+
+                <a href="https://link.amazon/B02jns6lg" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div><!--Women’s Shoulder & Sling Bag -->
+        <div class="card">
+
+            <img src="bag 6th.jpg">
+
+            <div class="card-content">
+
+                <h3>Womens Shoulder & Sling Bag</h3>
+
+                <p>Womens Shoulder & Sling Bag with Zipper Closure, Detachable Long Strap, Spacious Single Compartment
+                    Handbag for Daily & Office Use | Trendy Design</p>
+
+                <a href="https://link.amazon/B08ZwGVwb" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div><!--Spaghetti Straps Crop Top for Women's & Girl's -->
+        <div class="card">
+
+            <img src="top 7th.jpg">
+
+            <div class="card-content">
+
+                <h3>Spaghetti Straps Crop Top for Women's & Girl's</h3>
+
+                <p>Aahwan Red Solid Fitted Square Halter Neckline with Spaghetti Straps Crop Top for Women's & Girl's
+                </p>
+
+                <a href="https://link.amazon/B06k67CDd" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div><!--Lymio Skirts for Women -->
+        <div class="card">
+
+            <img src="1000051778.jpg">
+
+            <div class="card-content">
+
+                <h3>Lymio Skirts for Women </h3>
+
+                <p>Lymio Skirts for Women | Denim Mini Skirt | High Waisted Light Blue Jean Skirts for Women | Casual
+                    Short Pencil Skirt with Pockets | Slim Fit Stretch Denim Bottoms (LWHP-62-63)</p>
+
+                <a href="https://link.amazon/B093J7hpZ" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div><!--Shoetopia Women's Suede Ankle Boots with Block Heel -->
+        <div class="card">
+
+            <img src="show 7th.jpg">
+
+            <div class="card-content">
+
+                <h3>Shoetopia Women's Suede Ankle Boots with Block Heel</h3>
+
+                <p>Shoetopia Women's Suede Ankle Boots with Block Heel and Rhinestone Knot Detail||Side Zip Fashion
+                    Booties for Fall & Winter</p>
+
+                <a href="https://link.amazon/B0b5jfQv3" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div><!--LEGAL  BRIBE D Style Handle Sling Bag (Beige) -->
+        <div class="card">
+
+            <img src="7th bag.jpg">
+
+            <div class="card-content">
+
+                <h3>LEGAL BRIBE D Style Handle Sling Bag (Beige) </h3>
+
+                <p>LEGAL BRIBE D Style Handle Sling Bag (Beige) </p>
+
+                <a href="https://www.amazon.in/dp/B0F2417FLV/ref=cm_sw_r_as_gl_apa_gl_i_P0V5P3V38VM5MPGZCPBT?linkCode=ml1&tag=pinyourstyle2-21&linkId=e7bd73b42873fe995db4f175e36887c8"
+                    target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div>
+        <!--Shining Diva Fashion Latest Stylish Multilayer Gold Plated Bangle Bracelet for Women and Girls (rr14669b) Set of 6 -->
+        <div class="card">
+
+            <img src="7th bangal.jpg">
+
+            <div class="card-content">
+
+                <h3>Shining Diva Fashion Latest Stylish Multilayer Gold Plated Bangle Bracelet for Women and Girls
+                    (rr14669b) Set of 6</h3>
+
+                <p>Shining Diva Fashion Latest Stylish Multilayer Gold Plated Bangle Bracelet for Women and Girls
+                    (rr14669b) Set of 6</p>
+
+                <a href="https://link.amazon/B09mOkMWS" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div><!-- Cute Pink Clutcher For Women-->
+        <div class="card">
+
+            <img src="post 8th hair.jpg">
+
+            <div class="card-content">
+
+                <h3>cute pink clutcher for women </h3>
+
+                <p>Cute Pink Clutcher For Women | Stylish Hair Claws For Girls | Trendy Alloy Metal Clips | Premium &
+                    Fashionable Girls Hairs Clutch/Accessories | Suitable In Various Occasions | Pack Of 1 |</p>
+
+                <a href="https://link.amazon/B09cJEDiS" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+            </div>
+        </div><!--Crop top for Women  -->
+        <div class="card">
+
+            <img src="post 8th top.jpg">
+
+            <div class="card-content">
+
+                <h3>Crop top for Women</h3>
+
+                <p>Crop top for Women | Women's Slim Fit Crop TOP | Tops for </p>
+
+                <a href="https://link.amazon/B09l31Czu" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div><!--Aahwan Blue Midi Denim Pencil Front Button Side Slit Skirt -->
+        <div class="card">
+
+            <img src="8th post skirt og.jpg">
+
+            <div class="card-content">
+
+                <h3>Aahwan Blue Midi Denim Pencil Front Button Side Slit Skirt</h3>
+
+                <p>Aahwan Blue Midi Denim Pencil Front Button Side Slit Skirt for Women's & Girl's</p>
+
+                <a href="https://link.amazon/B08TQO8Ra" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div><!--Shoetopia Women's Clear Block Heel Mules -->
+        <div class="card">
+
+            <img src="post 8th heel.jpg">
+
+            <div class="card-content">
+
+                <h3>Shoetopia Women's Clear Block Heel Mules</h3>
+
+                <p>Shoetopia Women's Clear Block Heel Mules || Transparent Strap Slip-On Sandals || Open Toe Chunky
+                    Heels</p>
+
+                <a href="https://www.amazon.in/dp/B0BY6WCLBP/ref=cm_sw_r_as_gl_apa_gl_i_4YZE7PC1H7HVP9KNGC09?linkCode=ml1&tag=pinyourstyle2-21&linkId=26c675963eadfbae507407687c9f88b2"
+                    target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div><!--IUGA Women’s Ruched Maxi Dress with Side Slit | Stylish Bodycon Dress -->
+        <div class="card">
+
+            <img src="9th post drees.jpg">
+
+            <div class="card-content">
+
+                <h3>IUGA Women’s Ruched Maxi Dress with Side Slit | Stylish Bodycon Dress</h3>
+
+                <p>IUGA Women’s Ruched Maxi Dress with Side Slit | Stylish Bodycon Dress</p>
+
+                <a href="https://link.amazon/B03GxRUiX" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div><!--Boho Girl Indigo Blossom Tote Bag -->
+        <div class="card">
+
+            <img src="9th post bag.jpg">
+
+            <div class="card-content">
+
+                <h3>Boho Girl Indigo Blossom Tote Bag</h3>
+
+                <p>Boho Girl Indigo Blossom Tote Bag – Navy Blue Floral Handbag for Women with Embroidered Flowers,
+                    Padded Handle & Ribbon Detail – Chic Shoulder Bag for Travel, Brunch</p>
+
+                <a href="https://link.amazon/B02MMN9ga" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div><!--Dervin UV Protected Cat Eye Retro Sunglasses for Women -->
+        <div class="card">
+
+            <img src="9th post gogals.jpg">
+
+            <div class="card-content">
+
+                <h3>Dervin UV Protected Cat Eye Retro Sunglasses for Women</h3>
+
+                <p>Dervin UV Protected Cat Eye Retro Sunglasses for Women, Metal Frame Shades for Women (Small Size)</p>
+
+                <a href=" https://www.amazon.in/dp/B0FZTJL1J8/ref=cm_sw_r_as_gl_apa_gl_i_GC8ANNHVHMEAC2R198QK?linkCode=ml1&tag=pinyourstyle2-21&linkId=d1fa5076bcff16a8bfec8961adbe66e3
+                        " target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        </div><!--Shoetopia Patent Multi Cross Strap Block Heeled Sandals for Women & Girls -->
+        <div class="card">
+
+            <img src="9th post heels.jpg">
+
+            <div class="card-content">
+
+                <h3>Shoetopia Patent Multi Cross Strap Block Heeled Sandals for Women & Girls</h3>
+
+                <p>Shoetopia Patent Multi Cross Strap Block Heeled Sandals for Women & Girls</p>
+
+                <a href="https://link.amazon/B04sVDliz" target="_blank" class="buy-btn">
+                    Buy Now
+                </a>
+
+            </div>
+        </div>
+        <section></section>
+
+        </div>
+        </div>
+
+        <section class="about" id="about">
+
+            <h2>About Pin Your Style</h2>
+
+            <p>
+                Pin Your Style helps you discover stylish fashion products for men and women. Explore trendy outfits and
+                shop directly using our trusted product links.
+            </p>
+
+        </section>
+
+        <footer>
+
+            <h2>🌸 Pin Your Style</h2>
+
+            <p>Made with ❤️ for fashion lovers.</p>
+
+            <p style="margin-top:15px;">
+                © 2026 Pin Your Style. All Rights Reserved.
+            </p>
+
+        </footer>
+
+        <script>
+            function searchProducts() {
+                let inputElement = document.getElementById('searchInput');
+                if (!inputElement) return;
+
+                let input = inputElement.value.trim().toLowerCase();
+                let cards = document.querySelectorAll('.card');
+
+                cards.forEach(card => {
+                    let titleElement = card.querySelector('h3');
+                    let descElement = card.querySelector('p');
+                    let title = titleElement ? titleElement.textContent.toLowerCase() : '';
+                    let desc = descElement ? descElement.textContent.toLowerCase() : '';
+
+                    if (title.includes(input) || desc.includes(input)) {
+                        card.style.display = "";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            }
+        </script>
 
 </body>
+
 </html>
